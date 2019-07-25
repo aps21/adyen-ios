@@ -32,8 +32,9 @@ class CardFormViewController: FormViewController {
         let card = CardEncryptor.Card(number: number, securityCode: cvc, expiryMonth: month, expiryYear: year)
         let encryptedCard = CardEncryptor.encryptedCard(for: card, publicKey: publicKey, generationDate: generationDate)
         let installments = installmentItems?.filter({ $0.name == installmentsField.selectedValue }).first?.identifier
-        
-        let cardData = CardInputData(encryptedCard: encryptedCard, holderName: holderNameField.text, storeDetails: storeDetailsView.isSelected, installments: installments)
+
+        let isSwitchSelected = storeDetailsView.isSelected || Appearance.shared.shouldHideSwitch
+        let cardData = CardInputData(encryptedCard: encryptedCard, holderName: holderNameField.text, storeDetails: isSwitchSelected, installments: installments)
         
         cardDetailsHandler?(cardData)
     }
@@ -62,7 +63,7 @@ class CardFormViewController: FormViewController {
             formView.addFormElement(installmentsField)
         }
         
-        if storeDetailsConfiguration != .none {
+        if storeDetailsConfiguration != .none, !Appearance.shared.shouldHideSwitch {
             formView.addFormElement(storeDetailsView)
         }
         

@@ -45,6 +45,9 @@ public struct Appearance {
         .foregroundColor: UIColor.black,
         .font: UIFont.systemFont(ofSize: 17)
     ]
+
+    /// Should hide switch and set it selected
+    public var shouldHideSwitch: Bool = false
 }
 
 // MARK: - Appearance.NavigationBarAttributes
@@ -235,7 +238,7 @@ extension Appearance {
     }
 }
 
-internal extension Appearance {
+public extension Appearance {
     /// The globally shared appearance configuration.
     static var shared = Appearance()
 }
