@@ -69,3 +69,6 @@
 "giropay.minimumLength" = "Min. 4 characters";
 "giropay.noResults" = "No search results";
 "giropay.continueToYourBank" = "Continue to your bank";
+
+"form.credit-cart-old-title" = "Credit Card";
+"form.credit-cart-new-title" = "Add card";

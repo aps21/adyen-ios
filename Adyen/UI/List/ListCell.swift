@@ -4,6 +4,7 @@
 // This file is open source and available under the MIT license. See the LICENSE file for more info.
 //
 
+import AdyenInternal
 import UIKit
 
 internal final class ListCell: UITableViewCell {
@@ -23,7 +24,11 @@ internal final class ListCell: UITableViewCell {
     
     internal var item: ListItem? {
         didSet {
-            itemView.title = item?.title ?? ""
+            if let title = item?.title, title.lowercased() == ADYLocalizedString("form.credit-cart-old-title").lowercased() {
+                itemView.title = ADYLocalizedString("form.credit-cart-new-title")
+            } else {
+                itemView.title = item?.title ?? ""
+            }
             itemView.subtitle = item?.subtitle ?? ""
             itemView.imageURL = item?.imageURL
             resetAccessoryView()

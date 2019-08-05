@@ -154,15 +154,16 @@ internal final class CheckoutPresenter: NSObject {
                     strongSelf.delegate?.didSelect(paymentMethod, in: strongSelf)
                 }
             }
-            
-            if paymentMethods.preferred.contains(paymentMethod) {
-                item.deletionHandler = { [weak self] in
-                    if let strongSelf = self {
-                        strongSelf.delegate?.didDelete(paymentMethod, in: strongSelf)
-                    }
-                }
-            }
-            
+
+            // TODO: need to delete items
+//            if paymentMethods.preferred.contains(paymentMethod) {
+//                item.deletionHandler = { [weak self] in
+//                    if let strongSelf = self {
+//                        strongSelf.delegate?.didDelete(paymentMethod, in: strongSelf)
+//                    }
+//                }
+//            }
+
             return item
         }
         

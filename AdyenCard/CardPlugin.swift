@@ -31,7 +31,8 @@ internal class CardPlugin: PaymentDetailsPlugin {
         let amount = paymentSession.payment.amount(for: paymentMethod)
         
         let formViewController = CardFormViewController(appearance: appearance)
-        formViewController.title = paymentMethod.name
+        let isCreditCard = paymentMethod.name.lowercased() == ADYLocalizedString("form.credit-cart-old-title").lowercased()
+        formViewController.title = isCreditCard ? ADYLocalizedString("form.credit-cart-new-title") : paymentMethod.name
         formViewController.paymentMethod = paymentMethod
         formViewController.paymentSession = paymentSession
         formViewController.payActionTitle = appearance.checkoutButtonAttributes.title(for: amount)
